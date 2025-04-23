@@ -1,0 +1,60 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Response Parameters Schema",
+  "type": "object",
+  "properties": {
+    "presence_level": { "type": "number" },
+    "mirroring_degree": { "type": "number" },
+    "shift_vector": {
+      "type": "object",
+      "properties": {
+        "valence": { "type": "number" },
+        "arousal": { "type": "number" }
+      },
+      "required": ["valence", "arousal"]
+    },
+    "timing": {
+      "type": "object",
+      "properties": {
+        "delay_ms": { "type": "number" },
+        "typing_style": { "type": "string" },
+        "pause_insertion": { "type": "boolean" }
+      },
+      "required": ["delay_ms", "typing_style"]
+    },
+    "modal": {
+      "type": "object",
+      "properties": {
+        "linguistic": {
+          "type": "object",
+          "properties": {
+            "tone": { "type": "string" },
+            "complexity": { "type": "string" },
+            "sentence_length": { "type": "string" }
+          },
+          "required": ["tone", "complexity"]
+        },
+        "visual": {
+          "type": "object",
+          "properties": {
+            "animation_speed": { "type": "string" },
+            "color_temp": { "type": "string" },
+            "presence_weight": { "type": "string" }
+          },
+          "required": ["animation_speed", "color_temp"]
+        },
+        "audio": {
+          "type": "object",
+          "properties": {
+            "bg_tone": { "type": "string" },
+            "volume_envelope": { "type": "string" },
+            "response_sounds": { "type": "boolean" }
+          },
+          "required": ["bg_tone", "volume_envelope"]
+        }
+      },
+      "required": ["linguistic", "visual", "audio"]
+    }
+  },
+  "required": ["presence_level", "mirroring_degree", "shift_vector", "timing", "modal"]
+}
